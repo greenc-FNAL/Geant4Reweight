@@ -12,34 +12,37 @@
 #  make package (builds distribution tarfile)
 # ======================================================================
 
-cmake_minimum_required (VERSION 3.20 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.20 FATAL_ERROR)
 
 find_package(cetmodules REQUIRED)
 project(geant4reweight VERSION 01.14.04)
 
-  include(CetCMakeEnv)
-  cet_cmake_env()
+include(CetCMakeEnv)
+cet_cmake_env()
   
-  cet_set_compiler_flags(DIAGS CAUTIOUS
-    WERROR
-    NO_UNDEFINED
-    EXTRA_FLAGS -pedantic -Wno-unused-local-typedefs
-  )
+cet_set_compiler_flags(DIAGS CAUTIOUS
+  WERROR
+  NO_UNDEFINED
+  EXTRA_FLAGS -pedantic -Wno-unused-local-typedefs
+)
   
-  cet_report_compiler_flags(REPORT_THRESHOLD VERBOSE)
+cet_report_compiler_flags(REPORT_THRESHOLD VERBOSE)
   
-  #new
-  find_package(cetlib REQUIRED)
-  find_package(cetlib_except REQUIRED)
-  find_package(CLHEP REQUIRED)
-  find_package(fhiclcpp REQUIRED EXPORT)
+#new
+find_package(cetlib REQUIRED)
+find_package(cetlib_except REQUIRED)
+find_package(CLHEP REQUIRED)
+find_package(fhiclcpp REQUIRED EXPORT)
 
-  find_package( Geant4 REQUIRED EXPORT)
-  find_package(ROOT REQUIRED COMPONENTS Hist Tree Core Gpad)
+find_package(Geant4 REQUIRED EXPORT)
+find_package(ROOT COMPONENTS Hist Tree Core Gpad REQUIRED EXPORT)
 
-  # ADD SOURCE CODE SUBDIRECTORIES HERE
-  add_subdirectory(geant4reweight)
-  # tests
-  add_subdirectory(test)
+# ADD SOURCE CODE SUBDIRECTORIES HERE
+add_subdirectory(geant4reweight)
+add_subdirectory(app)
+add_subdirectory(scripts)
+
+# tests
+add_subdirectory(test)
   
 cet_cmake_config()

@@ -1,3 +1,4 @@
-add_subdirectory(src)
-add_subdirectory(app)
-add_subdirectory(scripts)
+add_subdirectory(PredictionBase)
+add_subdirectory(PropBase)
+add_subdirectory(FitterBase)
+add_subdirectory(ReweightBase)
