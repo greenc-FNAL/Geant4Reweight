@@ -39,8 +39,6 @@ find_package(ROOT COMPONENTS Hist Tree Core Gpad REQUIRED EXPORT)
 
 # ADD SOURCE CODE SUBDIRECTORIES HERE
 add_subdirectory(geant4reweight)
-add_subdirectory(app)
-add_subdirectory(scripts)
 
 # tests
 add_subdirectory(test)
